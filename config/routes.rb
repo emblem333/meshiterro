@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   #get 'users/show'
   #get 'users/edit'
-  resources :post_images, only: [:new, :create, :index, :show, :destroy]
+  resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
+  end
   # get 'post_images/new'
   # get 'post_images/index'
   # get 'post_images/show'
